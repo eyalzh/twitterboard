@@ -1,0 +1,15 @@
+name: TwitterBoard
+main: org.samson.bukkit.plugins.twitterboard.TwitterBoardPlugin
+description: Creates twitter boards.
+version: 0.6
+
+commands:
+   twitterboard:
+      description: TwitterBoard administration command.
+      usage: /<command> [checkconfig | version]
+      permission: twitterboard.admin
+
+permissions:
+   twitterboard.admin:
+      description: Allows you to run the TwitterBoard admin commands
+      default: op

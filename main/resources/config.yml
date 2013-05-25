@@ -1,0 +1,38 @@
+#
+# The twitter application keys. You must add those as part of the installation of the plugin!
+# To do this, you need to add a new application at https://dev.twitter.com/apps/new
+# See the documentation for more details.
+#
+consumerkey: ""
+consumersecret: ""
+accesstoken: ""
+accesstokensecret: ""
+
+#
+# This allows you to change the directive on the sign that creates a twitter board.
+# The only reason to change this is to resolve conflicts with other plugins. 
+# The directive is case-insensitive.
+#
+maindirective: "[twitter]"
+
+#
+# This is the default color of the twitter board. You should specify color codes using the & character.
+# For example, "&1" or "&l&2". 
+# Please note that using color codes will leave less space on the signs (i.e. they count as characters),
+# so if you use a long color code, you might need more than 3 signs for the tweet text on your wall.
+# The default is no color codes at all, which leaves maximum space for the tweet.
+#
+defaultcolor: ""
+
+
+#
+# This is the character that you can use to specify color codes on the sign itself.
+# Change this to resolve conflicts with other plugins. It must be a single character.
+#
+colorcodechar: "&"
+
+
+
+
+
+

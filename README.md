@@ -1,0 +1,1 @@
+Display the latest tweet from any user on Twitter, such as your server’s official updates, in your minecraft world. The latest tweet will occupy at most 3 signs, thanks to twitter’s 140 characters limitation.
