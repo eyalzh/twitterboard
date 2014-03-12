@@ -6,7 +6,7 @@ version: ${project.version}
 commands:
    twitterboard:
       description: TwitterBoard administration command.
-      usage: |
+      usage:|
         /<command> version - Get the plugin's version
         /<command> checkconfig - Check if the config is OK.
         /<command> tweet <msg> - Tweet a message using the account.

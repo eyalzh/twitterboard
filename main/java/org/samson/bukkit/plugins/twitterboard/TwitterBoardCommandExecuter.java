@@ -1,8 +1,13 @@
 package org.samson.bukkit.plugins.twitterboard;
 
+import java.util.Arrays;
+
+import org.apache.commons.lang.StringUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.samson.bukkit.plugins.twitterboard.twitterservice.TwitterService;
 import org.samson.bukkit.plugins.twitterboard.twitterservice.TwitterServiceConfig;
 
 public class TwitterBoardCommandExecuter implements CommandExecutor {
@@ -26,13 +31,33 @@ public class TwitterBoardCommandExecuter implements CommandExecutor {
 	        	return executeVersionCommand(sender, args);
 	        }
 
+    		if (args.length > 1 && args[0].equalsIgnoreCase("tweet")) {
+	        	return executeTweetCommand(sender, args);
+	        }
+    		
     	}
     	
     	return false;
     }
 
+	private boolean executeTweetCommand(CommandSender sender, String[] args) {
+
+		TwitterService service = plugin.getTwitterService();
+		
+		String[] tweetText = Arrays.copyOfRange(args, 1, args.length);
+		boolean success = service.tweet(StringUtils.join(tweetText,' '));
+		
+		if (success) {
+			sender.sendMessage(ChatColor.GREEN + "Tweet sent.");
+		} else {
+			sender.sendMessage(ChatColor.RED + "Could not send tweet. Reason: " + service.getLastError());
+		}
+		
+		return true;
+	}
+
 	private boolean executeVersionCommand(CommandSender sender, String[] args) {
-		sender.sendMessage("TwitterBoard version " + TwitterBoardPlugin.VERSION);
+		sender.sendMessage("TwitterBoard version " + plugin.getDescription().getVersion());
 		return true;
 	}
 

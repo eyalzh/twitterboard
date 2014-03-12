@@ -7,5 +7,7 @@ public interface TwitterService {
 	public String getLatestTweet(String username);
 	public void setLogger(Logger logger);
 	public boolean testKeys();
+	public boolean tweet(String string);
+	public String getLastError();
 	
 }

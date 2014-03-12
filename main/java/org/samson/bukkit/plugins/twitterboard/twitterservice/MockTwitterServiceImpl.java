@@ -8,6 +8,8 @@ import java.util.logging.Logger;
  */
 public class MockTwitterServiceImpl implements TwitterService {
 
+	private Logger logger;
+	
 	@Override
 	public String getLatestTweet(String username) {
 		String res = null;
@@ -24,11 +26,23 @@ public class MockTwitterServiceImpl implements TwitterService {
 
 	@Override
 	public void setLogger(Logger logger) {
+		this.logger = logger;
 	}
 
 	@Override
 	public boolean testKeys() {
 		return true;
+	}
+
+	@Override
+	public boolean tweet(String string) {
+		logger.info("string to tweet is " + string);
+		return true;
+	}
+
+	@Override
+	public String getLastError() {
+		return "unknown error";
 	}
 	
 }

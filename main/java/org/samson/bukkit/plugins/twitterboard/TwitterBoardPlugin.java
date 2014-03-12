@@ -8,8 +8,6 @@ import org.samson.bukkit.plugins.twitterboard.twitterservice.TwitterService;
 import org.samson.bukkit.plugins.twitterboard.twitterservice.TwitterServiceConfig;
 
 public class TwitterBoardPlugin extends JavaPlugin {
-
-	public final static String VERSION = "0.6";
 	
 	private final TwitterBoardEventListener eventListener = new TwitterBoardEventListener(this);
 	private final TwitterBoardCommandExecuter commandExecutor = new TwitterBoardCommandExecuter(this);	
@@ -39,11 +37,12 @@ public class TwitterBoardPlugin extends JavaPlugin {
 			
 			if (this.getConfig().getBoolean("mockmode", false)) {
 				twitterService = new MockTwitterServiceImpl();
+				this.getLogger().info("Twitterboard is using mock service for testing");
 			} else {
 				twitterService = new DefaultTwitterServiceImpl(twitterConfig);
-				twitterService.setLogger(this.getLogger());
 			}
 			
+			twitterService.setLogger(this.getLogger());
 			PluginManager pm = this.getServer().getPluginManager();
 			pm.registerEvents(eventListener, this);
 			

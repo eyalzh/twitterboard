@@ -19,6 +19,8 @@ public class DefaultTwitterServiceImpl implements TwitterService {
 	
 	private TwitterFactory twitterFactory;
 	private Logger logger;
+	
+	private String lastError = "";
 		
 	public DefaultTwitterServiceImpl(TwitterServiceConfig twitterConfig) {
 		
@@ -86,6 +88,26 @@ public class DefaultTwitterServiceImpl implements TwitterService {
 		}
 		
 		return false;
+	}
+
+	@Override
+	public boolean tweet(String string) {
+		
+		Twitter twitterInstance = twitterFactory.getInstance();
+				
+	    try {
+			twitterInstance.updateStatus(string);
+		} catch (TwitterException e) {
+			lastError = e.getMessage();
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Override
+	public String getLastError() {
+		return lastError;
 	}	
 	
 }
